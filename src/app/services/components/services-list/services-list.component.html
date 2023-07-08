@@ -2,7 +2,7 @@
   [@animateStagger]="{ value: '100' }"
   class="w-full h-full flex flex-col justify-center items-stretch"
 >
-  <div class="h-32 bg-blue-200"></div>
+  <div class="h-32 bg-violet-200"></div>
 
   <div class="flex justify-center items-start">
     <div
@@ -19,7 +19,7 @@
 
         <app-button
           [@animate]="{ value: '*', params: { x: '40px', delay: '150ms' } }"
-          routerLink="/dashboard/products/create"
+          routerLink="/dashboard/services/create"
           [matType]="ButtonTypes.round_stroked"
           [color]="ButtonColors.primary"
           [text]="'create' | translate"
@@ -30,15 +30,11 @@
 
       <app-table
         class="table-scrollable max-h-[77vh] shadow-md bg-white"
-        [data]="productListController.list"
-        [dataLoaded]="productListController.dataLoaded"
+        [data]="servicesListController.list"
+        [dataLoaded]="servicesListController.dataLoaded"
         [colSpanCount]="6"
       >
         <ng-template #headers>
-          <th class="sm:text-[14px] text-xs text-start">
-            {{ "image" | translate }}
-          </th>
-
           <th class="sm:text-[14px] text-xs text-start">
             {{ "name" | translate }}
           </th>
@@ -48,11 +44,15 @@
           </th>
 
           <th class="sm:text-[14px] text-xs text-start">
-            {{ "description" | translate }}
+            {{ "additionalFeesPercentage" | translate }}
           </th>
 
           <th class="sm:text-[14px] text-xs text-start">
             {{ "discountPercentage" | translate }}
+          </th>
+
+          <th class="sm:text-[14px] text-xs text-start">
+            {{ "description" | translate }}
           </th>
 
           <th class="sm:text-[14px] text-xs text-start">
@@ -63,18 +63,6 @@
         </ng-template>
 
         <ng-template #row let-row let-index="index">
-          <td class="sm:text-[15px] text-xs break-words">
-            <img
-              [ngSrc]="
-                row?.attributes?.imageUrl || 'assets/images/istockphoto.jpg'
-              "
-              width="100"
-              height="80"
-              loading="lazy"
-              class="rounded-xl border-2 border-gray-200 shadow-md hover:scale-110"
-            />
-          </td>
-
           <td
             class="max-w-[300px] sm:text-[14px] leading-5 text-xs break-words"
           >
@@ -86,11 +74,15 @@
           </td>
 
           <td class="sm:text-[15px] text-xs break-words">
-            {{ row?.attributes?.desc ?? "ــــــــــ" }}
+            {{ row?.attributes?.additionalFeesPercentege ?? "ــــــــــ" }}
           </td>
 
           <td class="sm:text-[15px] text-xs break-words">
             {{ row?.attributes?.discountPercentage ?? "ــــــــــ" }}
+          </td>
+
+          <td class="sm:text-[15px] text-xs break-words">
+            {{ row?.attributes?.desc ?? "ــــــــــ" }}
           </td>
 
           <td class="sm:text-[15px] text-xs break-words">
@@ -104,7 +96,7 @@
               class="h-full w-auto flex justify-start items-center sm:gap-2 gap-[3px]"
             >
               <app-button
-                [routerLink]="['/dashboard/products/edit', row?.id]"
+                [routerLink]="['/dashboard/services/edit', row?.id]"
                 [matType]="ButtonTypes.miniFap"
                 [color]="ButtonColors.primary"
                 [toolTip]="'edit' | translate"
@@ -128,10 +120,10 @@
             class="h-auto w-full bg-white flex justify-end items-center px-2"
           >
             <mat-paginator
-              *ngIf="!!productListController"
-              [length]="productListController.totalLength"
-              [pageSize]="productListController.size"
-              [pageSizeOptions]="productListController.pageSizeOptions"
+              *ngIf="!!servicesListController"
+              [length]="servicesListController.totalLength"
+              [pageSize]="servicesListController.size"
+              [pageSizeOptions]="servicesListController.pageSizeOptions"
               panelClass="bg-transparent"
               class="w-1/2"
               (page)="onPageChange($event)"
@@ -146,12 +138,12 @@
       </app-table>
 
       <div
-        *ngIf="productListController.dataLoaded"
+        *ngIf="servicesListController.dataLoaded"
         [@animate]="{ value: '*', params: { y: '80px', delay: '700ms' } }"
         class="fixed sm:bottom-[80px] bottom-[40px] sm:right-[80px] right-[40px] z-50 h-20 w-28 flex flex-col justify-center items-center mat-elevation-z7 rounded-md bg-white"
       >
         <span class="font-semibold text-2xl truncate">{{
-          productListController.totalPrice
+          servicesListController.totalPrice
         }}</span>
         <span class="font-medium text-xs">{{ "totalPrice" | translate }}</span>
       </div>

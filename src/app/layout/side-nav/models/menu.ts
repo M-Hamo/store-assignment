@@ -10,7 +10,7 @@ export const MENU: MenuItem[] = [
   {
     id: 2,
     label: 'Services',
-    icon: 'groups',
-    link: '/board/vendors',
+    icon: 'miscellaneous_services',
+    link: '/dashboard/services',
   },
 ];

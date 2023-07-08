@@ -1,12 +1,12 @@
 <nav
   [@animateStagger]="{ value: '100' }"
-  class="side-nav relative h-screen flex flex-col justify-between items-stretch p-0"
+  class="side-nav w-full relative h-screen flex flex-col justify-between items-stretch p-0"
 >
   <ul class="outline-none flex flex-col justify-center items-center gap-3 py-4">
     <span
       [@animate]="{ value: '*', params: { y: '-20px', delay: '500ms' } }"
       routerLink="/"
-      class="text-2xl font-bold cursor-pointer py-2"
+      class="sm:text-2xl text-lg sm:font-bold font-medium cursor-pointer py-2"
       >Store</span
     >
 
@@ -19,7 +19,7 @@
         routerLinkActive="active-route"
         (click)="onSelectTap()"
       >
-        <mat-icon style="height: 28px; width: 28px; font-size: 28px">{{
+        <mat-icon style="height: 40px; width: 40px; font-size: 40px">{{
           item?.icon
         }}</mat-icon>
       </a>

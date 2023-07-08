@@ -1,7 +1,9 @@
 <page-component
-  [@animateStagger]="{ value: !editMode() ? '50' : '150' }"
+  [@animateStagger]="{ value: !editMode() ? '50' : '100' }"
   [pageTitle]="
-    editMode() ? addEditProductForm.get('name')?.value : ('newProd' | translate)
+    editMode()
+      ? addEditServiceForm.get('name')?.value
+      : ('newService' | translate)
   "
   class="w-full h-full flex flex-col justify-center items-stretch"
 >
@@ -10,51 +12,11 @@
   <div class="flex justify-center items-start">
     <form
       *ngIf="!editMode() || (editMode() && dataLoaded()); else loader"
-      [formGroup]="addEditProductForm"
-      class="w-11/12 h-full grid sm:grid-cols-2 grid-cols-1 sm:gap-3 gap-2 content-start p-0 m-0 -mt-24 pb-10"
+      [formGroup]="addEditServiceForm"
+      class="w-11/12 h-full grid sm:grid-cols-2 grid-cols-1 sm:gap-3 gap-2 content-start p-0 m-0 -mt-20 pb-10"
     >
-      <div class="flex flex-col justify-center items-center gap-2">
-        <img
-          [@animate]="{ value: '*', params: { y: '-40px', delay: '100ms' } }"
-          *ngIf="imageUrl()"
-          [ngSrc]="imageUrl() || 'assets/images/istockphoto.jpg'"
-          width="200"
-          height="200"
-          loading="lazy"
-          class="max-h-[200px] rounded-xl border-2 border-gray-200 shadow-md hover:scale-110 place-self-center"
-        />
-
-        <img
-          [@animate]="{ value: '*', params: { y: '-40px', delay: '150ms' } }"
-          *ngIf="!imageUrl()"
-          ngSrc="assets/images/istockphoto.jpg"
-          width="200"
-          height="200"
-          loading="lazy"
-          class="rounded-xl border-2 border-gray-200 shadow-md hover:scale-110 place-self-center"
-        />
-
-        <mat-form-field
-          [@animate]="{ value: '*', params: { y: '-40px', delay: '200ms' } }"
-          class="w-full"
-          appearance="fill"
-        >
-          <mat-label>{{ "imageUrl" | translate }}</mat-label>
-          <input formControlName="imageUrl" matInput />
-        </mat-form-field>
-      </div>
-
       <mat-form-field
-        [@animate]="{ value: '*', params: { y: '-40px', delay: '250ms' } }"
-        appearance="fill"
-      >
-        <mat-label>{{ "description" | translate }}</mat-label>
-        <textarea formControlName="desc" matInput rows="6"></textarea>
-        <mat-error>{{ displayErrorMessages["desc"] }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field
-        [@animate]="{ value: '*', params: { y: '-40px', delay: '300ms' } }"
+        [@animate]="{ value: '*', params: { y: '-40px', delay: '50ms' } }"
         appearance="fill"
       >
         <mat-label>{{ "name" | translate }}</mat-label>
@@ -63,7 +25,7 @@
       </mat-form-field>
 
       <mat-form-field
-        [@animate]="{ value: '*', params: { y: '-40px', delay: '350ms' } }"
+        [@animate]="{ value: '*', params: { y: '-40px', delay: '100ms' } }"
         appearance="fill"
       >
         <mat-label>{{ "price" | translate }}</mat-label>
@@ -73,7 +35,7 @@
       </mat-form-field>
 
       <mat-form-field
-        [@animate]="{ value: '*', params: { y: '-40px', delay: '400ms' } }"
+        [@animate]="{ value: '*', params: { y: '-40px', delay: '150ms' } }"
         appearance="fill"
       >
         <mat-label>{{ "fromDate" | translate }}</mat-label>
@@ -81,9 +43,8 @@
           formControlName="fromDate"
           matInput
           [matDatepicker]="fromDate"
-          [max]="addEditProductForm.get('toDate')?.value"
+          [max]="addEditServiceForm.get('toDate')?.value"
         />
-
         <mat-error>{{ displayErrorMessages["fromDate"] }}</mat-error>
 
         <mat-datepicker-toggle
@@ -95,7 +56,7 @@
       </mat-form-field>
 
       <mat-form-field
-        [@animate]="{ value: '*', params: { y: '-40px', delay: '450ms' } }"
+        [@animate]="{ value: '*', params: { y: '-40px', delay: '200ms' } }"
         appearance="fill"
       >
         <mat-label>{{ "toDate" | translate }}</mat-label>
@@ -103,7 +64,7 @@
           formControlName="toDate"
           matInput
           [matDatepicker]="toDate"
-          [min]="addEditProductForm.get('fromDate')?.value"
+          [min]="addEditServiceForm.get('fromDate')?.value"
         />
         <mat-error>{{ displayErrorMessages["toDate"] }}</mat-error>
 
@@ -116,7 +77,7 @@
       </mat-form-field>
 
       <mat-form-field
-        [@animate]="{ value: '*', params: { y: '-40px', delay: '500ms' } }"
+        [@animate]="{ value: '*', params: { y: '-40px', delay: '250ms' } }"
         appearance="fill"
       >
         <mat-label>{{ "discountPercentage" | translate }}</mat-label>
@@ -125,19 +86,45 @@
         <mat-error>{{ displayErrorMessages["discountPercentage"] }}</mat-error>
       </mat-form-field>
 
-      <div class="flex justify-center items-center gap-3">
+      <mat-form-field
+        [@animate]="{ value: '*', params: { y: '-40px', delay: '300ms' } }"
+        appearance="fill"
+      >
+        <mat-label>{{ "additionalFeesPercentage" | translate }}</mat-label>
+        <input
+          formControlName="additionalFeesPercentage"
+          matInput
+          type="number"
+        />
+        <mat-icon matSuffix>%</mat-icon>
+        <mat-error>{{
+          displayErrorMessages["additionalFeesPercentage"]
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field
+        [@animate]="{ value: '*', params: { y: '-40px', delay: '350ms' } }"
+        appearance="fill"
+      >
+        <mat-label>{{ "description" | translate }}</mat-label>
+        <textarea formControlName="desc" matInput rows="2"></textarea>
+        <mat-error>{{ displayErrorMessages["desc"] }}</mat-error>
+      </mat-form-field>
+
+      <div
+        [@animate]="{ value: '*', params: { y: '-40px', delay: '400ms' } }"
+        class="flex justify-center items-center gap-3"
+      >
         <app-button
-          [@animate]="{ value: '*', params: { y: '-40px', delay: '550ms' } }"
           [matType]="buttonTypes.raised"
           [color]="buttonColors.warn"
           [text]="'cancel' | translate"
-          routerLink="/dashboard/products"
+          routerLink="/dashboard/services"
           btnClass="sm:w-40"
         />
 
         <app-button
-          [@animate]="{ value: '*', params: { y: '-40px', delay: '600ms' } }"
-          [disabled]="addEditProductForm.invalid || !formChanges"
+          [disabled]="addEditServiceForm.invalid || !formChanges"
           [isLoading]="submitProcess()"
           [text]="(editMode() ? 'update' : 'save') | translate"
           [matType]="buttonTypes.raised"
