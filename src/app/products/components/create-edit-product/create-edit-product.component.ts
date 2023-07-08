@@ -156,9 +156,6 @@ export class CreateEditProductComponent
       .createNewProduct({ ...payload })
       .pipe(
         tap(() => {
-          this._toasterService.success(
-            this._translateService.instant('prodCreatedSuccess')
-          );
           this._cashedFormValues = this.addEditProductForm.getRawValue();
         }),
         debounceTime(500),
@@ -174,9 +171,6 @@ export class CreateEditProductComponent
       .updateProduct({ ...payload })
       .pipe(
         tap(() => {
-          this._toasterService.success(
-            this._translateService.instant('prodUpdateSuccess')
-          );
           this._cashedFormValues = this.addEditProductForm.getRawValue();
         }),
         debounceTime(500),

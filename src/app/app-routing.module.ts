@@ -37,7 +37,12 @@ export const routes: Routes = [
           import('./products/products.module').then((m) => m.ProductsModule),
         title: 'Products',
       },
-
+      {
+        path: 'services',
+        loadChildren: () =>
+          import('./services/services.module').then((m) => m.ServicesModule),
+        title: 'Services',
+      },
       {
         path: '**',
         component: NotFoundComponent,

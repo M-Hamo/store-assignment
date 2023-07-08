@@ -1,12 +1,10 @@
-import { Component, DestroyRef, OnInit } from '@angular/core';
+import { Component, DestroyRef } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { Animations } from '@shared/animations/animations';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfirmationDialogService } from '@shared/components/confirmation-dialog';
+import { ServicesService } from '../../services/services.service';
 import { ButtonColors, ButtonTypes } from '@shared/utils/button-properties';
-import {
-  ProductListController,
-  QUERY,
-} from '../../utils/models/products-list-controller.model';
-import { PageEvent } from '@angular/material/paginator';
 import { Observable, from } from 'rxjs';
 import {
   concatMap,
@@ -16,34 +14,36 @@ import {
   take,
   tap,
 } from 'rxjs/operators';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ParamsHelper } from '@shared/helpers/param-helper';
-import { ProductsService } from '../../services/products.service';
-import { Datum, ProductsList } from '../../utils/interfaces/products.interface';
-import { ConfirmationDialogService } from '@shared/components/confirmation-dialog';
-import { TranslateService } from '@ngx-translate/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { PageEvent } from '@angular/material/paginator';
+import {
+  QUERY,
+  ServicesListController,
+} from '../../utils/models/services-list-controller.model';
+import { Datum, ServicesList } from '../../utils/interfaces/services.interface';
+import { Animations } from '@shared/animations/animations';
 
 @Component({
-  selector: 'products-list',
-  templateUrl: './products-list.component.html',
-  styleUrls: ['./products-list.component.scss'],
+  selector: 'services-list',
+  templateUrl: './services-list.component.html',
+  styleUrls: ['./services-list.component.scss'],
   animations: [Animations],
 })
-export class ProductsListComponent implements OnInit {
+export class ServicesListComponent {
   public constructor(
     private readonly _fb: FormBuilder,
     private readonly _router: Router,
     private readonly _route: ActivatedRoute,
     private readonly _destroyRef: DestroyRef,
-    private readonly _productsService: ProductsService,
+    private readonly _servicesService: ServicesService,
     private readonly _confirmService: ConfirmationDialogService,
     private readonly _translateService: TranslateService
   ) {}
 
   public search: FormControl<string | null> = this._fb.control(null);
 
-  public productListController = new ProductListController<Datum>();
+  public servicesListController = new ServicesListController<Datum>();
 
   public readonly ButtonTypes = ButtonTypes;
 
@@ -54,22 +54,22 @@ export class ProductsListComponent implements OnInit {
     this._searchChangeHandler();
   }
 
-  public onDeleteProduct = (prod: Datum): void => {
+  public onDeleteProduct = (service: Datum): void => {
     this._confirmService
       .Confirm(
         `${
           this._translateService.instant('from') +
           ' ' +
           this._translateService.instant('delete')
-        } (${prod.attributes?.name.split('').slice(0, 40).join('')}...) ?`,
+        } (${service.attributes?.name.split('').slice(0, 40).join('')}...) ?`,
         this._translateService.instant('sure'),
         this._translateService.instant('delete')
       )
       .pipe(
         take(1),
         filter(Boolean),
-        concatMap(() => this._productsService.deleteProduct(prod.id)),
-        switchMap(() => this._getProducts())
+        concatMap(() => this._servicesService.deleteService(service.id)),
+        switchMap(() => this._getServices())
       )
       .subscribe();
   };
@@ -117,30 +117,30 @@ export class ProductsListComponent implements OnInit {
             search: ParamsHelper.search(params, QUERY.SEARCH) as string,
           };
 
-          this.productListController = new ProductListController({
-            ...this.productListController,
+          this.servicesListController = new ServicesListController({
+            ...this.servicesListController,
             ...queryParams,
           });
 
           this.search.patchValue(queryParams?.search);
         }),
-        switchMap(() => this._getProducts()),
+        switchMap(() => this._getServices()),
         takeUntilDestroyed(this._destroyRef)
       )
       .subscribe();
   };
 
-  private _getProducts = (): Observable<ProductsList> => {
-    this.productListController.dataLoaded = false;
-    const { index, size, search } = this.productListController;
+  private _getServices = (): Observable<any> => {
+    this.servicesListController.dataLoaded = false;
+    const { index, size, search } = this.servicesListController;
 
-    return this._productsService.allProducts$.pipe(
-      tap((res: ProductsList) => {
+    return this._servicesService.allServices$.pipe(
+      tap((res: ServicesList) => {
         if (res?.data.length) {
-          this.productListController.list = (
+          this.servicesListController.list = (
             search
-              ? res?.data.filter((prod: Datum) =>
-                  prod?.attributes?.name
+              ? res?.data.filter((service: Datum) =>
+                  service?.attributes?.name
                     ?.toLowerCase()
                     .includes(search?.toLowerCase() as string)
                 )
@@ -150,16 +150,17 @@ export class ProductsListComponent implements OnInit {
             index ? (index as number) * (size as number) + 10 : size
           );
 
-          this.productListController.totalLength = res?.meta?.pagination?.total;
+          this.servicesListController.totalLength =
+            res?.meta?.pagination?.total;
 
-          this.productListController.totalPrice = res?.data.reduce(
+          this.servicesListController.totalPrice = res?.data.reduce(
             (acc, prod: Datum) =>
               acc +
               Number((prod?.attributes?.price || '0').replace(/[$]/g, '')),
             0
           );
         }
-        this.productListController.dataLoaded = true;
+        this.servicesListController.dataLoaded = true;
       })
     );
   };

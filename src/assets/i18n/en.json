@@ -54,5 +54,6 @@
   "newProd": "New Product",
   "editProd": "Edit Product",
   "prodUpdateSuccess": "Product updated successfully",
-  "prodCreatedSuccess": "Product created successfully"
+  "prodCreatedSuccess": "Product created successfully",
+  "additionalFeesPercentage": "Additional Fees Percentage"
 }

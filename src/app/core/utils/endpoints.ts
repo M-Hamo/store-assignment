@@ -11,15 +11,11 @@ export class Endpoints {
     deleteProduct: 'products/',
   };
 
-  public dashboard = {
-    getAllProducts: 'products',
-    deleteProduct: 'products/',
-    updateProduct: 'products/',
-    addNewProduct: 'products',
-  };
-
-  public categories = {
-    getCategories: 'products/categories',
-    getCategoryProducts: 'products/category/',
+  public services = {
+    getAllServices: 'services',
+    addNewService: 'services',
+    getService: 'services/',
+    updateService: 'services/',
+    deleteService: 'services/',
   };
 }
