@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1688799521959,
+  "timestamp": 1688813992236,
   "index": "/store-assignment/index.html",
   "assetGroups": [
     {
@@ -11,14 +11,16 @@
         "ignoreVary": true
       },
       "urls": [
-        "/store-assignment/537.d1d725e7b646c377.js",
+        "/store-assignment/131.df5393bccb783bf3.js",
+        "/store-assignment/257.fc042fd4c6f00d27.js",
+        "/store-assignment/329.b563d889969708cf.js",
         "/store-assignment/favicon.ico",
         "/store-assignment/index.html",
-        "/store-assignment/main.0b0889638f5a2813.js",
+        "/store-assignment/main.5245f29544b35169.js",
         "/store-assignment/manifest.webmanifest",
         "/store-assignment/polyfills.2cc64eaabcc9ee1b.js",
-        "/store-assignment/runtime.0f02611f27d0ced0.js",
-        "/store-assignment/styles.f328c52b0d47a074.css"
+        "/store-assignment/runtime.d867885b39d72463.js",
+        "/store-assignment/styles.fe76736b58949e36.css"
       ],
       "patterns": []
     },
@@ -69,7 +71,9 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/store-assignment/537.d1d725e7b646c377.js": "e35ac987856f9ec6e51008699d2c731c86d9c7fb",
+    "/store-assignment/131.df5393bccb783bf3.js": "aa422086c22772adedde393b4892f1831ce28efa",
+    "/store-assignment/257.fc042fd4c6f00d27.js": "3e458cb1c7301f129f6d2df3ade1827c0044d139",
+    "/store-assignment/329.b563d889969708cf.js": "f5308ce500f353b5f22e4d588baac45bb50ed7b7",
     "/store-assignment/JF-Flat-regular.681a12a55c9e0c3a.ttf": "6e2de4de6f30a45377f771cc54267564ce87a6ef",
     "/store-assignment/assets/fonts/jalal/JalalLTBold.otf": "0752a81e5ee2c04f63463f86a965f3a41debe519",
     "/store-assignment/assets/fonts/jalal/JalalLTLight.otf": "2b0c67f737b5398183ca2ea9473e39fd64dafa40",
@@ -78,7 +82,7 @@
     "/store-assignment/assets/fonts/jzoor/JF-Flat-regular.ttf": "6e2de4de6f30a45377f771cc54267564ce87a6ef",
     "/store-assignment/assets/fonts/jzoor/JF-Flat-regular.woff": "21da494b4f4c242175fb2088686fde64f21d121c",
     "/store-assignment/assets/i18n/ar.json": "bd2abcfeffc8e269418438c2c807dd385ef7a5c5",
-    "/store-assignment/assets/i18n/en.json": "7eaf8b6eb500901c36e92914abc562e2f543311e",
+    "/store-assignment/assets/i18n/en.json": "df9370cbde7bd8dafd085d2aac43aa52b727d00d",
     "/store-assignment/assets/icons/icon-128x128.png": "b1f06c7d714abb4a0cc4d1f7c954feb26826e4c4",
     "/store-assignment/assets/icons/icon-144x144.png": "96a0d629765c1bc85d9263c6bc83094ca776d267",
     "/store-assignment/assets/icons/icon-152x152.png": "b1fbbee3902eb96a7658e3bb006f31f78ca5a44c",
@@ -94,8 +98,8 @@
     "/store-assignment/assets/images/istockphoto.jpg": "e0bc383e11f7a05e391bbf37dd75a3c37a1c135b",
     "/store-assignment/assets/images/not-found-plug-amico.svg": "7249b7b32356f6426ebf102edd2d872327915edb",
     "/store-assignment/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/store-assignment/index.html": "b36782060474f5eb3efa42445de1815beb71bf92",
-    "/store-assignment/main.0b0889638f5a2813.js": "7d1598840af84d1e68f2dd0c20f3b09aa2a45141",
+    "/store-assignment/index.html": "b90427d5594304541bed81240625bc4c090f7590",
+    "/store-assignment/main.5245f29544b35169.js": "64b6f99f8184e822ceee358762cc1120ddf26a77",
     "/store-assignment/manifest.webmanifest": "b8dbd19348e28bf999faf9d1ca8a9aed2523cbde",
     "/store-assignment/material-icons-outlined.78a93b2079680a08.woff": "b52ccd8fca4199d257b2a9fe377db29862f2853e",
     "/store-assignment/material-icons-outlined.f86cb7b0aa53f0fe.woff2": "2f9e28ab559782402f27332633c843c40209d95a",
@@ -108,8 +112,8 @@
     "/store-assignment/material-icons.4ad034d2c499d9b6.woff": "e4bb7c1e40d3febee58df963db276b2bf68c117b",
     "/store-assignment/material-icons.59322316b3fd6063.woff2": "0bc0c675480d94ec7e8609dda6227f88c5d08d2c",
     "/store-assignment/polyfills.2cc64eaabcc9ee1b.js": "bc6a419edab29bc8c9cdc633f22e84cd5ff48834",
-    "/store-assignment/runtime.0f02611f27d0ced0.js": "ecad9a667555a850f2a67ff2f73048ba7f4ba721",
-    "/store-assignment/styles.f328c52b0d47a074.css": "6569029118d8f23623c97cbc315b856c1d58fb96"
+    "/store-assignment/runtime.d867885b39d72463.js": "b7a5b2e8908f7b44dd5efc1b0921074f12dc5c0d",
+    "/store-assignment/styles.fe76736b58949e36.css": "26e1680a59968b94c7d597805474b4c8175d2288"
   },
   "navigationUrls": [
     {

@@ -24,6 +24,7 @@
   "actions": "Actions",
   "create": "Create",
   "edit": "Edit",
+  "update": "Update",
   "delete": "Delete",
   "sure": "Are you sure ?",
   "cancel": "Cancel",
@@ -52,7 +53,11 @@
   "discardChanges": "Discard changes",
   "saveChangesMsg": "You are about to leave this page without saving. Do you really want to leave without saving ?",
   "newProd": "New Product",
+  "newService": "New Service",
   "editProd": "Edit Product",
   "prodUpdateSuccess": "Product updated successfully",
-  "prodCreatedSuccess": "Product created successfully"
+  "prodCreatedSuccess": "Product created successfully",
+  "servicesUpdateSuccess": "Services updated successfully",
+  "servicesCreatedSuccess": "Services created successfully",
+  "additionalFeesPercentage": "Additional Fees Percentage"
 }
