@@ -6,6 +6,9 @@ import {
   OnInit,
   Signal,
   ViewChildren,
+  WritableSignal,
+  computed,
+  signal,
 } from '@angular/core';
 import {
   FormBuilder,
@@ -13,9 +16,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
 import { Animations } from '@shared/animations/animations';
-import { ToastrService } from 'ngx-toastr';
 import { AddEditProductFormGroup } from '../../utils/interfaces/add-edit-product-form-group.interface';
 import {
   DisplayErrorMessage,
@@ -41,7 +42,7 @@ import {
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { GetProduct } from '../../utils/interfaces/products.interface';
-import { CreateEditProductPayload } from '../../utils/interfaces/add-edit.interface';
+import { CreateEditProductPayload } from '../../utils/interfaces/add-edit-product.interface';
 
 @Component({
   selector: 'create-edit-product',
@@ -57,8 +58,6 @@ export class CreateEditProductComponent
     private readonly _fb: FormBuilder,
     private readonly _router: Router,
     private readonly _route: ActivatedRoute,
-    private readonly _toasterService: ToastrService,
-    private readonly _translateService: TranslateService,
     private readonly _productsService: ProductsService,
     private readonly _destroyRef: DestroyRef
   ) {
@@ -88,17 +87,19 @@ export class CreateEditProductComponent
     { initialValue: '' as string }
   );
 
+  public prodId: WritableSignal<string | null> = signal(null);
+
+  public editMode: Signal<boolean> = computed(() => !!this.prodId());
+
+  public dataLoaded: WritableSignal<boolean> = signal(false);
+
+  public submitProcess: WritableSignal<boolean> = signal(false);
+
   public buttonTypes = ButtonTypes;
 
   public buttonColors = ButtonColors;
 
   public displayErrorMessages: DisplayErrorMessage = {};
-
-  public submitProcess: boolean = false;
-
-  public prodId: string | null = null;
-
-  public dataLoaded: boolean = false;
 
   private readonly _genericValidator =
     new GenericValidatorController<AddEditProductFormGroup>(
@@ -138,7 +139,7 @@ export class CreateEditProductComponent
   public onSubmit = (): void => {
     const payload: CreateEditProductPayload = {
       data: {
-        id: this.prodId as string,
+        id: this.prodId(),
         ...this.addEditProductForm.value,
         price: this.addEditProductForm.value?.price + '$',
         discountPercentage:
@@ -146,8 +147,10 @@ export class CreateEditProductComponent
       },
     } as CreateEditProductPayload;
 
-    this.submitProcess = true;
-    !!this.prodId ? this._updateHandler(payload) : this._createHandler(payload);
+    this.submitProcess.set(true);
+    this.editMode()
+      ? this._updateHandler(payload)
+      : this._createHandler(payload);
   };
 
   private _createHandler = (payload: CreateEditProductPayload): void => {
@@ -160,7 +163,7 @@ export class CreateEditProductComponent
         }),
         debounceTime(500),
         switchMap(() => from(this._router.navigate(['/dashboard/products']))),
-        finalize(() => (this.submitProcess = false)),
+        finalize(() => this.submitProcess.set(false)),
         takeUntilDestroyed(this._destroyRef)
       )
       .subscribe();
@@ -175,7 +178,7 @@ export class CreateEditProductComponent
         }),
         debounceTime(500),
         switchMap(() => from(this._router.navigate(['/dashboard/products']))),
-        finalize(() => (this.submitProcess = false)),
+        finalize(() => this.submitProcess.set(false)),
         takeUntilDestroyed(this._destroyRef)
       )
       .subscribe();
@@ -186,7 +189,7 @@ export class CreateEditProductComponent
       .pipe(
         map((param: ParamMap) => {
           const prodId: string | null = param.get('id');
-          this.prodId = prodId;
+          this.prodId.set(prodId);
           return prodId;
         }),
         filter(Boolean),
@@ -206,7 +209,7 @@ export class CreateEditProductComponent
               )
             ),
           });
-          this.dataLoaded = true;
+          this.dataLoaded.set(true);
           this._cashedFormValues = this.addEditProductForm.getRawValue();
         }),
         takeUntilDestroyed(this._destroyRef)

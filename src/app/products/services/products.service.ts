@@ -9,7 +9,7 @@ import {
 } from '../utils/interfaces/products.interface';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
-import { CreateEditProductPayload } from '../utils/interfaces/add-edit.interface';
+import { CreateEditProductPayload } from '../utils/interfaces/add-edit-product.interface';
 
 @Injectable({
   providedIn: 'root',

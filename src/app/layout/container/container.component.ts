@@ -1,8 +1,8 @@
 import { Breakpoints } from '@angular/cdk/layout';
-import { Component, DestroyRef, OnInit, Signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Component, Signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { SideToggleService } from '@shared/services/side-toggle.service';
-import { tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { BreakpointObserverService } from 'src/app/shared/services/breakpoint-observer.service';
 
 @Component({
@@ -10,11 +10,10 @@ import { BreakpointObserverService } from 'src/app/shared/services/breakpoint-ob
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.scss'],
 })
-export class LayoutContainerComponent implements OnInit {
+export class LayoutContainerComponent {
   public constructor(
     private readonly _sideToggleService: SideToggleService,
-    private readonly _breakpointObserver: BreakpointObserverService,
-    private readonly _destroyRef: DestroyRef
+    private readonly _breakpointObserver: BreakpointObserverService
   ) {}
 
   public readonly sideToggled: Signal<boolean> =
@@ -22,18 +21,12 @@ export class LayoutContainerComponent implements OnInit {
 
   public readonly Breakpoints = Breakpoints;
 
-  public isSmallScreen: boolean = false;
-
-  public ngOnInit(): void {
-    this._breakpointObserver.currentBreakpoint$
-      .pipe(
-        tap((val: string) => {
-          if (val === Breakpoints.Small || val === Breakpoints.XSmall)
-            this.isSmallScreen = true;
-          else this.isSmallScreen = false;
-        }),
-        takeUntilDestroyed(this._destroyRef)
+  public isSmallScreen: Signal<boolean> = toSignal(
+    this._breakpointObserver.currentBreakpoint$.pipe(
+      map(
+        (val: string) => val === Breakpoints.Small || val === Breakpoints.XSmall
       )
-      .subscribe();
-  }
+    ),
+    { initialValue: false }
+  );
 }

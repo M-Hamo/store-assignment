@@ -1,5 +1,12 @@
 import { Meta } from 'src/app/products/utils/interfaces/products.interface';
 
+export interface GetService {
+  data: {
+    id: number;
+    attributes: Attributes;
+  };
+  meta: Meta;
+}
 export interface ServicesList {
   data: Datum[];
   meta: Meta;

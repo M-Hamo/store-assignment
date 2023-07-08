@@ -5,7 +5,11 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ConnectionService } from 'src/app/core/services/connection.service';
 import { Endpoints } from 'src/app/core/utils/endpoints';
-import { ServicesList } from '../utils/interfaces/services.interface';
+import {
+  GetService,
+  ServicesList,
+} from '../utils/interfaces/services.interface';
+import { CreateEditServicePayload } from '../utils/interfaces/add-edit-service.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -23,8 +27,8 @@ export class ServicesService {
     this.endpoints.services.getAllServices
   );
 
-  // public getProduct = (prodId: number): Observable<GetProduct> =>
-  //   this._connectionService.get(this.endpoints.products.getProduct + prodId);
+  public getService = (serviceId: number): Observable<GetService> =>
+    this._connectionService.get(this.endpoints.services.getService + serviceId);
 
   public deleteService = (serviceId: number): Observable<unknown> =>
     this._connectionService
@@ -37,29 +41,29 @@ export class ServicesService {
         )
       );
 
-  // public createNewProduct = (
-  //   payload: CreateEditProductPayload
-  // ): Observable<unknown> =>
-  //   this._connectionService
-  //     .post(this.endpoints.products.addNewProduct, payload)
-  //     .pipe(
-  //       tap(() =>
-  //         this._toasterService.success(
-  //           this._translateService.instant('prodCreatedSuccess')
-  //         )
-  //       )
-  //     );
+  public createNewService = (
+    payload: CreateEditServicePayload
+  ): Observable<unknown> =>
+    this._connectionService
+      .post(this.endpoints.services.addNewService, payload)
+      .pipe(
+        tap(() =>
+          this._toasterService.success(
+            this._translateService.instant('servicesCreatedSuccess')
+          )
+        )
+      );
 
-  // public updateProduct = (
-  //   payload: CreateEditProductPayload
-  // ): Observable<unknown> =>
-  //   this._connectionService
-  //     .put(this.endpoints.products.updateProduct + payload?.data.id, payload)
-  //     .pipe(
-  //       tap(() =>
-  //         this._toasterService.success(
-  //           this._translateService.instant('prodUpdateSuccess')
-  //         )
-  //       )
-  //     );
+  public updateService = (
+    payload: CreateEditServicePayload
+  ): Observable<unknown> =>
+    this._connectionService
+      .put(this.endpoints.services.updateService + payload?.data.id, payload)
+      .pipe(
+        tap(() =>
+          this._toasterService.success(
+            this._translateService.instant('servicesUpdateSuccess')
+          )
+        )
+      );
 }

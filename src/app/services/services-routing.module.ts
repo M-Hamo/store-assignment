@@ -2,20 +2,23 @@ import { NgModule, Type } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SaveChangesGuard } from '../core/guards/save-changes.guard';
 import { ServicesListComponent } from './components/services-list/services-list.component';
+import { CreateEditServiceComponent } from './components/create-edit-service/create-edit-service.component';
 
 const routes: Routes = [
   {
     path: '',
     component: ServicesListComponent,
   },
-  // {
-  //   path: 'create',
-  //   canDeactivate: [SaveChangesGuard],
-  // },
-  // {
-  //   path: 'edit/:id',
-  //   canDeactivate: [SaveChangesGuard],
-  // },
+  {
+    path: 'create',
+    component: CreateEditServiceComponent,
+    canDeactivate: [SaveChangesGuard],
+  },
+  {
+    path: 'edit/:id',
+    component: CreateEditServiceComponent,
+    canDeactivate: [SaveChangesGuard],
+  },
 ];
 
 @NgModule({
@@ -23,5 +26,8 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class ServicesRoutingModule {
-  public static Components: Array<Type<any> | any[]> = [ServicesListComponent];
+  public static Components: Array<Type<any> | any[]> = [
+    ServicesListComponent,
+    CreateEditServiceComponent,
+  ];
 }

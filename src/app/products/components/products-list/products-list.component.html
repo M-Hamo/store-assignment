@@ -148,7 +148,7 @@
       <div
         *ngIf="productListController.dataLoaded"
         [@animate]="{ value: '*', params: { y: '80px', delay: '700ms' } }"
-        class="fixed bottom-[80px] right-[80px] z-50 h-20 w-28 flex flex-col justify-center items-center mat-elevation-z7 rounded-md bg-white"
+        class="fixed sm:bottom-[80px] bottom-[40px] sm:right-[80px] right-[40px] z-50 h-20 w-28 flex flex-col justify-center items-center mat-elevation-z7 rounded-md bg-white"
       >
         <span class="font-semibold text-2xl truncate">{{
           productListController.totalPrice

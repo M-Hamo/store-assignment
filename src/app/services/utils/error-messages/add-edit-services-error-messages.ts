@@ -1,6 +1,6 @@
 import { ValidatorMessages } from '@shared/helpers/generic-validator';
 
-export const AddEditProductErrorMessages: ValidatorMessages = {
+export const AddEditServicesErrorMessages: ValidatorMessages = {
   name: { required: 'Name is required' },
   price: {
     required: 'Price is required',
