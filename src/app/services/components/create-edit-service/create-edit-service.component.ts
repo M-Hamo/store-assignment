@@ -138,7 +138,7 @@ export class CreateEditServiceComponent
         price: this.addEditServiceForm.value?.price + '$',
         discountPercentage:
           this.addEditServiceForm.value?.discountPercentage + '%',
-        additionalFeesPercentage:
+        additionalFeesPercentege:
           this.addEditServiceForm.value?.additionalFeesPercentage + '%',
       },
     } as CreateEditServicePayload;
@@ -193,10 +193,6 @@ export class CreateEditServiceComponent
           this._servicesService.getService(Number(prodId))
         ),
         tap((service: GetService) => {
-          console.log(
-            '🚀 ~ file: create-edit-service.component.ts:196 ~ tap ~ service:',
-            service
-          );
           this.addEditServiceForm.patchValue({
             ...(service?.data?.attributes as any),
             price: Number(

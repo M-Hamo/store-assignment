@@ -10,5 +10,5 @@ export interface Data {
   price: string;
   toDate: Date;
   discountPercentage: string;
-  additionalFeesPercentage: string;
+  additionalFeesPercentege: string;
 }
