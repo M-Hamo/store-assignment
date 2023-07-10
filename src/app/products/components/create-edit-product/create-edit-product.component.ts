@@ -133,7 +133,6 @@ export class CreateEditProductComponent
 
   public ngOnInit(): void {
     this._paseProduct();
-    this._formChanges();
   }
 
   public ngAfterViewInit(): void {
@@ -241,6 +240,4 @@ export class CreateEditProductComponent
       },
     });
   };
-
-  private _formChanges = (): void => {};
 }
