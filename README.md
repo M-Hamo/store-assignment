@@ -14,6 +14,7 @@ A web application to show Categories with Products for user and the admin can ma
 
 Project is created with:
 
+- PWA
 - Angular 16
   - Using Signals
   - Required inputs
@@ -37,7 +38,7 @@ Project is created with:
 
 ## Clone app
 
-git clone `https://github.com/M-Hamo/store-assignment.git`
+git clone `https://github.com/shshinyo/store-assignment.git`
 
 ## Setup
 
@@ -52,7 +53,7 @@ Open your browser on http://localhost:2500/
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/store-assignment` directory.
+Run `ng build` to build the project. The build artifacts will be stored in the `docs` directory.
 
 ## Running unit tests
 
