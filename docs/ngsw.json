@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1689002887003,
+  "timestamp": 1689003041843,
   "index": "/store-assignment/index.html",
   "assetGroups": [
     {
@@ -11,16 +11,16 @@
         "ignoreVary": true
       },
       "urls": [
-        "/store-assignment/131.307cba1fd563d411.js",
-        "/store-assignment/257.f69136a425064b94.js",
-        "/store-assignment/329.06648b3a7073f81d.js",
+        "/store-assignment/131.fff5d7d902c78d55.js",
+        "/store-assignment/257.0e771dfe31e9b737.js",
+        "/store-assignment/329.3951b02a8c6fb8e9.js",
         "/store-assignment/favicon.ico",
         "/store-assignment/index.html",
-        "/store-assignment/main.e07c54571073e308.js",
+        "/store-assignment/main.8a4a8ab56ff91fa5.js",
         "/store-assignment/manifest.webmanifest",
         "/store-assignment/polyfills.2cc64eaabcc9ee1b.js",
-        "/store-assignment/runtime.d6611eba4de467bd.js",
-        "/store-assignment/styles.eb0d165ff2926244.css"
+        "/store-assignment/runtime.45e604a3e99a956e.js",
+        "/store-assignment/styles.6048cb386ba16730.css"
       ],
       "patterns": []
     },
@@ -71,9 +71,9 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/store-assignment/131.307cba1fd563d411.js": "85fcfd0e93fc4176b7c2bb11915445d31c8d4479",
-    "/store-assignment/257.f69136a425064b94.js": "a905d5d5a7c81b2527062b685a277b2a8612b547",
-    "/store-assignment/329.06648b3a7073f81d.js": "8b238016075deacb5a17370f040316f0d8b77073",
+    "/store-assignment/131.fff5d7d902c78d55.js": "c1d37bb725f85e4cbd68c8e7b3ffc2213c85a65c",
+    "/store-assignment/257.0e771dfe31e9b737.js": "60379fd60e338436432aa7a599b9629249d0eb14",
+    "/store-assignment/329.3951b02a8c6fb8e9.js": "66c66dbf7279fc90580053144e3df571705fbd0a",
     "/store-assignment/JF-Flat-regular.681a12a55c9e0c3a.ttf": "6e2de4de6f30a45377f771cc54267564ce87a6ef",
     "/store-assignment/assets/fonts/jalal/JalalLTBold.otf": "0752a81e5ee2c04f63463f86a965f3a41debe519",
     "/store-assignment/assets/fonts/jalal/JalalLTLight.otf": "2b0c67f737b5398183ca2ea9473e39fd64dafa40",
@@ -98,8 +98,8 @@
     "/store-assignment/assets/images/istockphoto.jpg": "e0bc383e11f7a05e391bbf37dd75a3c37a1c135b",
     "/store-assignment/assets/images/not-found-plug-amico.svg": "7249b7b32356f6426ebf102edd2d872327915edb",
     "/store-assignment/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/store-assignment/index.html": "639315e0193f34e422fc5983fca33eed566e145d",
-    "/store-assignment/main.e07c54571073e308.js": "7f95ff849aa23e369e02a2bf733971728fe7361d",
+    "/store-assignment/index.html": "d72235bbe67658b6bd1b748ef13eb6f5d32fbf67",
+    "/store-assignment/main.8a4a8ab56ff91fa5.js": "e47a53a81159617400973d9ec9fbb3434fcddb48",
     "/store-assignment/manifest.webmanifest": "ae5679d79aa2e917379a1bf1f146a5571071ea70",
     "/store-assignment/material-icons-outlined.78a93b2079680a08.woff": "b52ccd8fca4199d257b2a9fe377db29862f2853e",
     "/store-assignment/material-icons-outlined.f86cb7b0aa53f0fe.woff2": "2f9e28ab559782402f27332633c843c40209d95a",
@@ -112,8 +112,8 @@
     "/store-assignment/material-icons.4ad034d2c499d9b6.woff": "e4bb7c1e40d3febee58df963db276b2bf68c117b",
     "/store-assignment/material-icons.59322316b3fd6063.woff2": "0bc0c675480d94ec7e8609dda6227f88c5d08d2c",
     "/store-assignment/polyfills.2cc64eaabcc9ee1b.js": "bc6a419edab29bc8c9cdc633f22e84cd5ff48834",
-    "/store-assignment/runtime.d6611eba4de467bd.js": "8d977d68b9ed5a27d9f2c0639a29af6f6e32c870",
-    "/store-assignment/styles.eb0d165ff2926244.css": "f5180552fea451ea8e4c126666b780443b27af1c"
+    "/store-assignment/runtime.45e604a3e99a956e.js": "c43314b8d2ea506dcc1f0f6c7a8ac2d954292ace",
+    "/store-assignment/styles.6048cb386ba16730.css": "c220b52217f04426deede4238a8022a195670866"
   },
   "navigationUrls": [
     {
